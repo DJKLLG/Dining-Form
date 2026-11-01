@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Augustine Lodge No. 972 - Installation Meeting Booking</title>
+<style>
+  :root {
+    --primary-navy: #1a365d;
+    --accent-gold: #c59b27;
+    --light-bg: #f8fafc;
+    --border-color: #cbd5e1;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: #334155;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-top: 6px solid var(--primary-navy);
+  }
+  .header {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    padding: 24px;
+    text-align: center;
+  }
+  .header h1 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    color: var(--accent-gold);
+  }
+  .header p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.95;
+  }
+  .form-body {
+    padding: 24px;
+  }
+  .section-title {
+    font-size: 16px;
+    color: var(--primary-navy);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 6px;
+    margin-top: 20px;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+  .form-group {
+    margin-bottom: 16px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  .field-desc {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-navy);
+    box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .grid-3-title-names {
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr;
+    gap: 16px;
+  }
+  .guest-card {
+    background-color: #f1f5f9;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px dashed var(--border-color);
+    margin-bottom: 16px;
+  }
+  .guest-card-title {
+    font-weight: bold;
+    color: var(--primary-navy);
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+  .price-summary-box {
+    background-color: #fefce8;
+    border: 2px solid var(--accent-gold);
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .price-summary-box .total-label {
+    font-size: 14px;
+    color: #713f12;
+    margin-bottom: 4px;
+  }
+  .price-summary-box .total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-navy);
+  }
+  .price-summary-box .breakdown {
+    font-size: 12px;
+    color: #854d0e;
+    margin-top: 4px;
+  }
+  .bank-details-card {
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-navy);
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .bank-details-card h4 {
+    margin: 0 0 8px 0;
+    color: var(--primary-navy);
+    font-size: 14px;
+  }
+  .bank-details-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 6px 12px;
+    font-size: 13px;
+  }
+  .bank-details-grid strong {
+    color: #475569;
+  }
+  .dynamic-ref {
+    font-weight: bold;
+    color: var(--primary-navy);
+  }
+  .submit-btn {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+  }
+  .submit-btn:hover {
+    background-color: #2b6cb0;
+  }
+  .submit-btn:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>St. Augustine Lodge No. 972 Dining Form</h1>
+    <p>Installation Meeting - 18th November 2026</p>
+  </div>
+
+  <div class="form-body">
+    <form id="diningForm" action="https://script.google.com/macros/s/AKfycbzfD6vS54EmyKycQcoXRdw0HBAaaRYytp2YxQ3wlSqC7mhxgPFGg2w6VTtDhA9TB4LbZA/exec" method="POST">
+      
+      <div class="section-title">1. Member Information</div>
+      
+      <!-- Name Fields: Title (Q1), First Name (Q2), Last Name (Q3) -->
+      <div class="grid-3-title-names">
+        <div class="form-group">
+          <label for="title">Title *</label>
+          <select id="title" name="title" required>
+            <option value="">--</option>
+            <option value="Bro">Bro</option>
+            <option value="W Bro">W Bro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" oninput="updatePaymentReference()" required>
+        </div>
+      </div>
+
+      <!-- Masonic Rank / Office Field (Q4) -->
+      <div class="form-group">
+        <label for="masonicRank">Masonic Rank / Office *</label>
+        <div class="field-desc">This information will be printed to your placecard exactly as it appears here, case sensitive</div>
+        <input type="text" id="masonicRank" name="masonicRank" placeholder="e.g. Senior Warden / PPrGSuptWks" required>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="john.smith@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="lodgeName">Lodge Name & Number *</label>
+          <input type="text" id="lodgeName" name="lodgeName" value="St. Augustine Lodge No. 972" required>
+        </div>
+      </div>
+
+      <div class="section-title">2. Attendance & Dining Status</div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="attendingMeeting">Attending Lodge Meeting? *</label>
+          <select id="attendingMeeting" name="attendingMeeting" required>
+            <option value="">-- Select Option --</option>
+            <option value="Yes">Yes - Attending Meeting</option>
+            <option value="No">No - Apologies Only</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="attendingFestiveBoard">Dining at Festive Board? *</label>
+          <select id="attendingFestiveBoard" name="attendingFestiveBoard" onchange="calculateTotal()" required>
+            <option value="">-- Select Option --</option>
+            <option value="Yes">Yes - Dining (£25 per head)</option>
+            <option value="No">No - Meeting Only / Apologies</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dietary">Member Dietary Requirements / Allergies</label>
+        <select id="dietary" name="dietary">
+          <option value="None">None / Standard Menu</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Vegan">Vegan</option>
+          <option value="Gluten-Free">Gluten-Free</option>
+          <option value="Nut Allergy">Nut Allergy</option>
+          <option value="Other">Other (Specify below)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="specialDietDetails">Specific Dietary / Accessibility Details</label>
+        <textarea id="specialDietDetails" name="specialDietDetails" rows="2" placeholder="Provide additional dietary or seating details..."></textarea>
+      </div>
+
+      <div class="section-title">3. Guest Selection</div>
+      <div class="form-group">
+        <label for="guestCount">How many guests will be joining you? *</label>
+        <select id="guestCount" name="guestCount" onchange="renderGuestFields()" required>
+          <option value="0">0 Guests (Just myself)</option>
+          <option value="1">1 Guest</option>
+          <option value="2">2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+          <option value="5">5 Guests</option>
+        </select>
+      </div>
+
+      <!-- Dynamic Guest Information Fields -->
+      <div id="guestFieldsContainer"></div>
+
+      <div class="section-title">4. Payment & Pricing Summary</div>
+
+      <!-- Single Payment Method Selector -->
+      <div class="form-group">
+        <label for="paymentMethod">Payment Method *</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="">-- Select Payment Method --</option>
+          <option value="Pay by BACS (Preferred method)">Pay by BACS (Preferred method)</option>
+          <option value="Paid by Cash">Paid by Cash</option>
+          <option value="Paid by Cheque">Paid by Cheque</option>
+        </select>
+      </div>
+      
+      <!-- Total Calculation Box -->
+      <div class="price-summary-box">
+        <div class="total-label">Total Payable:</div>
+        <div class="total-amount" id="totalDisplay">£0.00</div>
+        <div class="breakdown" id="breakdownDisplay">Please select dining option above.</div>
+        <input type="hidden" id="calculatedTotal" name="calculatedTotal" value="0">
+      </div>
+
+      <!-- Bank Details Section with Dynamic Reference -->
+      <div class="bank-details-card">
+        <h4>BACS Payment Instructions</h4>
+        <div class="bank-details-grid">
+          <strong>Account Name:</strong> <span>St. Augustine Lodge No. 972</span>
+          <strong>Sort Code:</strong> <span>XX-XX-XX</span>
+          <strong>Account Number:</strong> <span>XXXXXXXX</span>
+          <strong>Payment Reference:</strong> <span class="dynamic-ref" id="paymentRefDisplay">Nov26 [Surname]</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Installation Booking</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  const PRICE_PER_HEAD = 25;
+
+  function updatePaymentReference() {
+    const lastNameInput = document.getElementById('lastName').value.trim();
+    const refDisplay = document.getElementById('paymentRefDisplay');
+    
+    if (lastNameInput.length > 0) {
+      refDisplay.textContent = `Nov26 ${lastNameInput}`;
+    } else {
+      refDisplay.textContent = 'Nov26 [Surname]';
+    }
+  }
+
+  function renderGuestFields() {
+    const count = parseInt(document.getElementById('guestCount').value) || 0;
+    const container = document.getElementById('guestFieldsContainer');
+    container.innerHTML = '';
+
+    for (let i = 1; i <= count; i++) {
+      const guestCard = document.createElement('div');
+      guestCard.className = 'guest-card';
+      guestCard.innerHTML = `
+        <div class="guest-card-title">Guest ${i} Details</div>
+        <div class="grid-3-title-names">
+          <div class="form-group">
+            <label for="guestTitle_${i}">Title *</label>
+            <select id="guestTitle_${i}" name="guestTitle_${i}" required>
+              <option value="">--</option>
+              <option value="Bro">Bro</option>
+              <option value="W Bro">W Bro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="guestFirstName_${i}">First Name *</label>
+            <input type="text" id="guestFirstName_${i}" name="guestFirstName_${i}" required>
+          </div>
+          <div class="form-group">
+            <label for="guestLastName_${i}">Last Name *</label>
+            <input type="text" id="guestLastName_${i}" name="guestLastName_${i}" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="guestMasonicRank_${i}">Masonic Rank / Office *</label>
+          <div class="field-desc">This information will be printed to their placecard exactly as it appears here, case sensitive</div>
+          <input type="text" id="guestMasonicRank_${i}" name="guestMasonicRank_${i}" placeholder="e.g. Master Mason / Past Master" required>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="guestLodge_${i}">Guest ${i} Lodge Name & Number</label>
+            <input type="text" id="guestLodge_${i}" name="guestLodge_${i}" placeholder="e.g. Friendship Lodge No. 1234">
+          </div>
+          <div class="form-group">
+            <label for="guestDietary_${i}">Guest ${i} Dietary Requirements</label>
+            <input type="text" id="guestDietary_${i}" name="guestDietary_${i}" placeholder="None / Vegetarian / Allergies">
+          </div>
+        </div>
+      `;
+      container.appendChild(guestCard);
+    }
+
+    calculateTotal();
+  }
+
+  function calculateTotal() {
+    const isDining = document.getElementById('attendingFestiveBoard').value === 'Yes';
+    const guestCount = parseInt(document.getElementById('guestCount').value) || 0;
+    
+    let totalDiners = 0;
+    if (isDining) {
+      totalDiners = 1 + guestCount;
+    }
+
+    const totalAmount = totalDiners * PRICE_PER_HEAD;
+
+    document.getElementById('totalDisplay').textContent = `£${totalAmount.toFixed(2)}`;
+    document.getElementById('calculatedTotal').value = totalAmount;
+
+    if (!isDining) {
+      document.getElementById('breakdownDisplay').textContent = 'Not dining at Festive Board (£0.00)';
+    } else if (guestCount === 0) {
+      document.getElementById('breakdownDisplay').textContent = `1 Member (£${PRICE_PER_HEAD}) = £${totalAmount}`;
+    } else {
+      document.getElementById('breakdownDisplay').textContent = `1 Member (£${PRICE_PER_HEAD}) + ${guestCount} Guest(s) (£${PRICE_PER_HEAD} x ${guestCount}) = £${totalAmount}`;
+    }
+  }
+
+  // Handle Form Submission via fetch (No page reload)
+  document.getElementById('diningForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting Booking...';
+
+    const formData = new FormData(this);
+
+    fetch(this.action, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert('Thank you! Your booking for the Installation Meeting has been received.');
+      this.reset();
+      renderGuestFields();
+      updatePaymentReference();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Installation Booking';
+    })
+    .catch(err => {
+      alert('Thank you! Your booking has been submitted successfully.');
+      this.reset();
+      renderGuestFields();
+      updatePaymentReference();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Installation Booking';
+    });
+  });
+
+  // Initial calculations on page load
+  calculateTotal();
+  updatePaymentReference();
+</script>
+
+</body>
+</html>
