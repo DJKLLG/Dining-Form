@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Augustine Lodge No. 972 - Dining Register</title>
+<style>
+  :root {
+    --primary-navy: #1a365d;
+    --accent-gold: #c59b27;
+    --light-bg: #f8fafc;
+    --border-color: #cbd5e1;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: #334155;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-top: 6px solid var(--primary-navy);
+  }
+  .header {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    padding: 24px;
+    text-align: center;
+  }
+  .header h1 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    color: var(--accent-gold);
+  }
+  .header p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.95;
+  }
+  
+  .nav-tabs {
+    display: flex;
+    background-color: #0f172a;
+    border-bottom: 3px solid var(--accent-gold);
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 14px;
+    text-align: center;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    color: #ffffff;
+    background-color: var(--primary-navy);
+    border-bottom: 4px solid var(--accent-gold);
+  }
+  .tab-btn:hover:not(.active) {
+    color: #e2e8f0;
+    background-color: #1e293b;
+  }
+
+  .form-body {
+    padding: 24px;
+  }
+  .section-title {
+    font-size: 16px;
+    color: var(--primary-navy);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 6px;
+    margin-top: 20px;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+  .form-group {
+    margin-bottom: 16px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  .field-desc {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-navy);
+    box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .grid-3-title-names {
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr;
+    gap: 16px;
+  }
+  .guest-card {
+    background-color: #f1f5f9;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px dashed var(--border-color);
+    margin-bottom: 16px;
+  }
+  .delegate-checkbox-container {
+    background: #e2e8f0;
+    padding: 10px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .delegate-checkbox-container label {
+    font-weight: normal;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .price-summary-box {
+    background-color: #fefce8;
+    border: 2px solid var(--accent-gold);
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .price-summary-box .total-label {
+    font-size: 14px;
+    color: #713f12;
+    margin-bottom: 4px;
+  }
+  .price-summary-box .total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-navy);
+  }
+  .price-summary-box .breakdown {
+    font-size: 12px;
+    color: #854d0e;
+    margin-top: 4px;
+  }
+  .bank-details-card {
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-navy);
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .bank-details-card h4 {
+    margin: 0 0 8px 0;
+    color: var(--primary-navy);
+    font-size: 14px;
+  }
+  .bank-details-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 6px 12px;
+    font-size: 13px;
+  }
+  .dynamic-ref {
+    font-weight: bold;
+    color: var(--primary-navy);
+  }
+  .submit-btn {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+  }
+  .submit-btn:hover {
+    background-color: #2b6cb0;
+  }
+  .submit-btn:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+  }
+  .remove-box {
+    background-color: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-left: 4px solid #e11d48;
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 24px;
+  }
+  .remove-box h4 {
+    margin: 0 0 8px 0;
+    color: #9f1239;
+  }
+  
+  .timer-banner {
+    background-color: #e0f2fe;
+    border: 1px solid #bae6fd;
+    border-left: 4px solid #0284c7;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #0369a1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cutoff-warning-card {
+    background-color: #fffbebf5;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #d97706;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #92400e;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>St. Augustine Lodge No. 972 Dining Register</h1>
+    <p id="activeMeetingBanner">Loading upcoming meeting details...</p>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="tab-btn active" id="tabMeetings" onclick="switchMainTab('meetings')">📅 Upcoming Meetings</button>
+    <button class="tab-btn" id="tabPerm" onclick="switchMainTab('perm')">📋 Permanent Dining List</button>
+  </div>
+
+  <div class="form-body">
+    
+    <!-- Countdown Banner -->
+    <div id="countdownBanner" class="timer-banner" style="display:none;">
+      <span>⏳ <strong>Caterer Cut-off Countdown:</strong></span>
+      <span id="countdownTimer" style="font-weight: bold; font-family: monospace; font-size: 14px;">Calculating...</span>
+    </div>
+
+    <!-- Cut-Off Warning Banner -->
+    <div id="cutoffWarningCard" class="cutoff-warning-card" style="display:none;">
+      <strong>⚠️ Caterer Cut-Off Notice:</strong>  
+      Dining numbers for this meeting were finalized on the Saturday prior to the meeting.  
+      <em>For late dining alterations or urgent guest additions, please contact the Senior Steward directly.</em>
+    </div>
+
+    <form id="diningForm" action="https://script.google.com/macros/s/AKfycbxkDUESuoKAot4q1MtUba5d-ChH3eA-jUmyuKVzSByscC2OCRRyvgnLwefnqVC_tnEt4Q/exec" method="POST">
+      
+      <input type="hidden" id="meetingDate" name="meetingDate" value="">
+
+      <!-- MEETING SELECTOR -->
+      <div id="meetingSelectionGroup">
+        <div class="section-title">1. Select Target Meeting</div>
+        <div class="form-group">
+          <label for="meetingSelector">Meeting Target</label>
+          <select id="meetingSelector" onchange="handleManualMeetingChange()"></select>
+        </div>
+      </div>
+
+      <div class="section-title" id="memberInfoTitle">Member Information</div>
+
+      <div class="form-group">
+        <label for="submissionType">Submission Type *</label>
+        <select id="submissionType" name="submissionType" onchange="handleSubmissionTypeChange()" required></select>
+      </div>
+
+      <div class="grid-3-title-names">
+        <div class="form-group">
+          <label for="title">Title *</label>
+          <select id="title" name="title" required>
+            <option value="">--</option>
+            <option value="Bro">Bro</option>
+            <option value="W Bro">W Bro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" oninput="updatePaymentReference()" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="masonicRank">Masonic Rank / Office *</label>
+        <div class="field-desc">Printed to your placecard exactly as entered here</div>
+        <input type="text" id="masonicRank" name="masonicRank" placeholder="e.g. Senior Warden / PPrGSuptWks" required>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="john.smith@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="lodgeName">Lodge Name & Number *</label>
+          <input type="text" id="lodgeName" name="lodgeName" value="St. Augustine Lodge No. 972" required>
+        </div>
+      </div>
+
+      <!-- REMOVAL REASON FIELD -->
+      <div id="removalReasonGroup" style="display:none;" class="remove-box">
+        <h4>Request Removal from Permanent Dining List</h4>
+        <p style="font-size: 13px; color: #9f1239; margin-bottom: 10px;">
+          Submitting this request will send an email notification to the Lodge Secretary/Steward to update the register.
+        </p>
+        <label for="removalReason">Reason for Leaving Permanent List (Optional)</label>
+        <textarea id="removalReason" name="removalReason" rows="2" placeholder="e.g. Moved away, health reasons..."></textarea>
+      </div>
+
+      <!-- MEETING ATTENDANCE SECTION -->
+      <div id="standardMeetingSection">
+        <div class="section-title">Attendance & Dining Status</div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="attendingMeeting">Attending Lodge Meeting? *</label>
+            <select id="attendingMeeting" name="attendingMeeting">
+              <option value="Yes">Yes - Attending Meeting</option>
+              <option value="No">No - Apologies Only</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="attendingFestiveBoard">Dining at Festive Board? *</label>
+            <select id="attendingFestiveBoard" name="attendingFestiveBoard" onchange="calculateTotal()">
+              <option value="Yes">Yes - Dining (£25 per head)</option>
+              <option value="No">No - Meeting Only / Apologies</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="dietaryGroup">
+        <div class="form-group">
+          <label for="dietary">Member Dietary Requirements / Allergies</label>
+          <select id="dietary" name="dietary">
+            <option value="None">None / Standard Menu</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Gluten-Free">Gluten-Free</option>
+            <option value="Nut Allergy">Nut Allergy</option>
+            <option value="Other">Other (Specify below)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="specialDietDetails">Specific Dietary / Accessibility Details</label>
+          <textarea id="specialDietDetails" name="specialDietDetails" rows="2" placeholder="Provide additional dietary or seating details..."></textarea>
+        </div>
+      </div>
+
+      <!-- GUEST SECTION -->
+      <div id="guestSection">
+        <div class="section-title">Guest Selection</div>
+        <div class="form-group">
+          <label for="guestCount">How many guests will be joining you? *</label>
+          <select id="guestCount" name="guestCount" onchange="renderGuestFields()">
+            <option value="0">0 Guests (Just myself)</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5 Guests</option>
+            <option value="6">6 Guests</option>
+            <option value="7">7 Guests</option>
+            <option value="8">8 Guests</option>
+            <option value="9">9 Guests</option>
+            <option value="10">10 Guests</option>
+          </select>
+        </div>
+
+        <div id="guestFieldsContainer"></div>
+      </div>
+
+      <!-- MANDATORY PERM DINING ACKNOWLEDGMENT -->
+      <div id="permAcknowledgmentGroup" style="display:none; margin-top: 16px; background-color: #f1f5f9; padding: 12px; border-radius: 4px; border: 1px solid #cbd5e1;">
+        <label style="font-weight: normal; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; font-size: 13px;">
+          <input type="checkbox" id="soConfirm" name="soConfirm" style="margin-top: 3px;">
+          <span><strong>Permanent Dining List Terms *</strong><br>I understand that joining the permanent list means I am automatically expected to dine at every regular meeting unless I explicitly submit apologies or request removal.</span>
+        </label>
+      </div>
+
+      <!-- PAYMENT & PRICING SUMMARY -->
+      <div id="paymentSummarySection">
+        <div class="section-title">Payment & Pricing Summary</div>
+
+        <div class="form-group" id="paymentMethodGroup">
+          <label for="paymentMethod" id="paymentMethodLabel">Payment Method *</label>
+          <select id="paymentMethod" name="paymentMethod"></select>
+        </div>
+        
+        <div class="price-summary-box" id="priceSummaryBox">
+          <div class="total-label">Total Payable:</div>
+          <div class="total-amount" id="totalDisplay">£0.00</div>
+          <div class="breakdown" id="breakdownDisplay">Select options above</div>
+          <input type="hidden" id="calculatedTotal" name="calculatedTotal" value="0">
+        </div>
+
+        <div class="bank-details-card" id="bankDetailsCard">
+          <h4 id="bankCardTitle">BACS Payment Instructions</h4>
+          <div class="bank-details-grid">
+            <strong>Account Name:</strong> <span>St. Augustine Lodge No. 972</span>
+            <strong>Sort Code:</strong> <span>60-04-27</span>
+            <strong>Account Number:</strong> <span>08823618</span>
+            <strong>Payment Reference:</strong> <span class="dynamic-ref" id="paymentRefDisplay">Mtg [Surname]</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Booking</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  const PRICE_PER_HEAD = 25;
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkDUESuoKAot4q1MtUba5d-ChH3eA-jUmyuKVzSByscC2OCRRyvgnLwefnqVC_tnEt4Q/exec';
+  
+  let liveDelegateCount = 0;
+  let delegateCap = 10;
+  let activeTab = 'meetings';
+  let countdownInterval = null;
+
+  function switchMainTab(tabName) {
+    activeTab = tabName;
+    document.getElementById('tabMeetings').classList.remove('active');
+    document.getElementById('tabPerm').classList.remove('active');
+    
+    const subSelect = document.getElementById('submissionType');
+
+    if (tabName === 'meetings') {
+      document.getElementById('tabMeetings').classList.add('active');
+      document.getElementById('activeMeetingBanner').style.display = 'block';
+      subSelect.innerHTML = `
+        <option value="Standard Booking" selected>Standard Booking (I am dining/attending)</option>
+        <option value="Permanent Diner Guest Only">Permanent Diner — Adding Guest(s) Only</option>
+        <option value="Additional Guest Entry">Adding Guest(s) to an Existing Booking</option>
+      `;
+    } else {
+      document.getElementById('tabPerm').classList.add('active');
+      document.getElementById('activeMeetingBanner').style.display = 'none';
+      document.getElementById('countdownBanner').style.display = 'none';
+      document.getElementById('cutoffWarningCard').style.display = 'none';
+      subSelect.innerHTML = `
+        <option value="Join Permanent Dining List" selected>Join Permanent Dining List</option>
+        <option value="Request Removal from Perm List">Request Removal from Permanent List</option>
+      `;
+    }
+    handleSubmissionTypeChange();
+  }
+
+  function getThirdWednesday(year, monthIndex) {
+    let date = new Date(year, monthIndex, 1);
+    let dayOfWeek = date.getDay();
+    let firstWedOffset = (3 - dayOfWeek + 7) % 7;
+    let thirdWedDate = 1 + firstWedOffset + 14;
+    return new Date(year, monthIndex, thirdWedDate);
+  }
+
+  function autoSelectActiveMeeting() {
+    const today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth();
+
+    let currentMtg = getThirdWednesday(year, month);
+    if (today > currentMtg) {
+      month++;
+      if (month > 11) { month = 0; year++; }
+      currentMtg = getThirdWednesday(year, month);
+    }
+
+    let cutoffSaturday = new Date(currentMtg);
+    cutoffSaturday.setDate(currentMtg.getDate() - 4);
+    cutoffSaturday.setHours(23, 59, 59, 999);
+
+    if (today > cutoffSaturday) {
+      document.getElementById('cutoffWarningCard').style.display = 'block';
+      document.getElementById('countdownBanner').style.display = 'none';
+    } else {
+      document.getElementById('cutoffWarningCard').style.display = 'none';
+      document.getElementById('countdownBanner').style.display = 'flex';
+      startCountdown(cutoffSaturday);
+    }
+
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const fullMonthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
+    const tabName = `${year}-${String(month + 1).padStart(2, '0')}_${monthNames[month]}`;
+    const displayTitle = `${fullMonthNames[month]} Meeting - Wednesday ${currentMtg.getDate()}th ${fullMonthNames[month]} ${year}`;
+
+    const selector = document.getElementById('meetingSelector');
+    selector.innerHTML = `<option value="${tabName}" selected>${displayTitle} (Active Booking)</option>`;
+    
+    for (let i = 1; i <= 3; i++) {
+      let nextM = month + i;
+      let nextY = year;
+      if (nextM > 11) { nextM -= 12; nextY++; }
+      let futureWed = getThirdWednesday(nextY, nextM);
+      let fTab = `${nextY}-${String(nextM + 1).padStart(2, '0')}_${monthNames[nextM]}`;
+      let fText = `${fullMonthNames[nextM]} Meeting - Wednesday ${futureWed.getDate()}th ${fullMonthNames[nextM]} ${nextY}`;
+      selector.innerHTML += `<option value="${fTab}">${fText}</option>`;
+    }
+
+    document.getElementById('meetingDate').value = tabName;
+    document.getElementById('activeMeetingBanner').textContent = displayTitle;
+  }
+
+  function startCountdown(targetDate) {
+    if (countdownInterval) clearInterval(countdownInterval);
+
+    function update() {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdownBanner').style.display = 'none';
+        document.getElementById('cutoffWarningCard').style.display = 'block';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('countdownTimer').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    update();
+    countdownInterval = setInterval(update, 1000);
+  }
+
+  function handleManualMeetingChange() {
+    const selector = document.getElementById('meetingSelector');
+    document.getElementById('meetingDate').value = selector.value;
+    document.getElementById('activeMeetingBanner').textContent = selector.options[selector.selectedIndex].text;
+  }
+
+  function handleSubmissionTypeChange() {
+    const subType = document.getElementById('submissionType').value;
+    const stdSection = document.getElementById('standardMeetingSection');
+    const guestSection = document.getElementById('guestSection');
+    const paySection = document.getElementById('paymentSummarySection');
+    const payGroup = document.getElementById('paymentMethodGroup');
+    const paySelect = document.getElementById('paymentMethod');
+    const payLabel = document.getElementById('paymentMethodLabel');
+    const mtgGroup = document.getElementById('meetingSelectionGroup');
+    const removalGroup = document.getElementById('removalReasonGroup');
+    const permAckGroup = document.getElementById('permAcknowledgmentGroup');
+    const bankTitle = document.getElementById('bankCardTitle');
+    const submitBtn = document.getElementById('submitBtn');
+    const priceBox = document.getElementById('priceSummaryBox');
+    const bankCard = document.getElementById('bankDetailsCard');
+    const soCheck = document.getElementById('soConfirm');
+
+    if (subType === "Request Removal from Perm List") {
+      mtgGroup.style.display = "none";
+      stdSection.style.display = "none";
+      guestSection.style.display = "none";
+      paySection.style.display = "none";
+      permAckGroup.style.display = "none";
+      soCheck.required = false;
+      removalGroup.style.display = "block";
+      submitBtn.textContent = "Submit Removal Request";
+      submitBtn.style.backgroundColor = "#e11d48";
+    } else if (subType === "Join Permanent Dining List") {
+      mtgGroup.style.display = "none";
+      stdSection.style.display = "none";
+      guestSection.style.display = "none";
+      removalGroup.style.display = "none";
+      paySection.style.display = "block";
+      payGroup.style.display = "block";
+      permAckGroup.style.display = "block";
+      soCheck.required = true;
+      priceBox.style.display = "none";
+      bankCard.style.display = "block";
+      bankTitle.textContent = "Lodge BACS Details (For Meeting Payments)";
+      
+      payLabel.textContent = "Usual Meeting Payment Method *";
+      paySelect.innerHTML = `
+        <option value="Pay per Meeting via BACS (Preferred)">Pay per Meeting via BACS (Preferred)</option>
+        <option value="Paid by Cash at Each Meeting">Paid by Cash at Each Meeting</option>
+        <option value="Paid by Cheque at Each Meeting">Paid by Cheque at Each Meeting</option>
+      `;
+
+      submitBtn.textContent = "Submit Permanent Dining Registration";
+      submitBtn.style.backgroundColor = "#1a365d";
+    } else {
+      removalGroup.style.display = "none";
+      permAckGroup.style.display = "none";
+      soCheck.required = false;
+      mtgGroup.style.display = "block";
+      stdSection.style.display = "block";
+      guestSection.style.display = "block";
+      paySection.style.display = "block";
+      payGroup.style.display = "block";
+      priceBox.style.display = "block";
+      bankCard.style.display = "block";
+      bankTitle.textContent = "BACS Payment Instructions";
+      
+      payLabel.textContent = "Payment Method *";
+      paySelect.innerHTML = `
+        <option value="Pay by BACS (Preferred method)">Pay by BACS (Preferred method)</option>
+        <option value="Paid by Cash">Paid by Cash</option>
+        <option value="Paid by Cheque">Paid by Cheque</option>
+      `;
+
+      submitBtn.textContent = "Submit Booking";
+      submitBtn.style.backgroundColor = "#1a365d";
+    }
+
+    calculateTotal();
+    updatePaymentReference();
+  }
+
+  function updatePaymentReference() {
+    const lastNameInput = document.getElementById('lastName').value.trim();
+    const refDisplay = document.getElementById('paymentRefDisplay');
+    const subType = document.getElementById('submissionType').value;
+    
+    if (subType === "Join Permanent Dining List") {
+      refDisplay.textContent = lastNameInput.length > 0 ? `PERM ${lastNameInput}` : 'PERM [Surname]';
+    } else {
+      refDisplay.textContent = lastNameInput.length > 0 ? `Mtg ${lastNameInput}` : 'Mtg [Surname]';
+    }
+  }
+
+  function toggleDelegateMode(index) {
+    const checkbox = document.getElementById(`isDelegate_${index}`);
+    const detailsDiv = document.getElementById(`guestDetailsFields_${index}`);
+    const fallbackDiv = document.getElementById(`delegateFallback_${index}`);
+    const fnInput = document.getElementById(`guestFirstName_${index}`);
+    const lnInput = document.getElementById(`guestLastName_${index}`);
+    const rankInput = document.getElementById(`guestMasonicRank_${index}`);
+
+    if (checkbox.checked) {
+      detailsDiv.style.display = 'none';
+      if (liveDelegateCount >= delegateCap) {
+        fallbackDiv.style.display = 'block';
+        fnInput.value = 'Donation';
+        lnInput.value = 'Sponsorship Fallback';
+        rankInput.value = 'Charity / Wine Fund Supporter';
+      } else {
+        fallbackDiv.style.display = 'none';
+        fnInput.value = 'Visiting';
+        lnInput.value = 'Delegate';
+        rankInput.value = 'Sponsoring Member Delegate (TBC)';
+      }
+      fnInput.removeAttribute('required');
+      lnInput.removeAttribute('required');
+      rankInput.removeAttribute('required');
+    } else {
+      detailsDiv.style.display = 'block';
+      fallbackDiv.style.display = 'none';
+      fnInput.value = '';
+      lnInput.value = '';
+      rankInput.value = '';
+      fnInput.setAttribute('required', 'required');
+      lnInput.setAttribute('required', 'required');
+      rankInput.setAttribute('required', 'required');
+    }
+    calculateTotal();
+  }
+
+  function renderGuestFields() {
+    const count = parseInt(document.getElementById('guestCount').value) || 0;
+    const container = document.getElementById('guestFieldsContainer');
+    container.innerHTML = '';
+
+    for (let i = 1; i <= count; i++) {
+      const guestCard = document.createElement('div');
+      guestCard.className = 'guest-card';
+      guestCard.innerHTML = `
+        <div class="guest-card-title"><strong>Guest ${i} Details</strong></div>
+        <div class="delegate-checkbox-container">
+          <label for="isDelegate_${i}">
+            <input type="checkbox" id="isDelegate_${i}" name="isDelegate_${i}" onchange="toggleDelegateMode(${i})">
+            <strong>Sponsor a Visiting Delegate</strong> <em>(Check if sponsoring an unassigned guest)</em>
+          </label>
+        </div>
+        <div id="delegateFallback_${i}" style="display:none; background-color: #fefce8; border: 1px solid #c59b27; padding: 12px; border-radius: 6px; margin-bottom: 12px; font-size: 13px;">
+          <strong style="color: #1a365d;">ℹ️ Delegation Sponsorship Cap Reached</strong>
+          <p style="margin: 4px 0 8px 0; color: #713f12;">All visiting delegates for this meeting have been sponsored!</p>
+          <label style="display:block; margin-bottom: 4px; font-weight: 600;">Direct your £25.00 sponsorship to:</label>
+          <select name="guestFallbackChoice_${i}" style="font-size: 13px; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; width: 100%;">
+            <option value="Worshipful Master Charity Fund">Worshipful Master's Chairty Fund</option>
+            <option value="Festive Board Wine & Bar Fund">Festive Board Wine & Bar Fund</option>
+          </select>
+        </div>
+        <div id="guestDetailsFields_${i}">
+          <div class="grid-3-title-names">
+            <div class="form-group">
+              <label for="guestTitle_${i}">Title *</label>
+              <select id="guestTitle_${i}" name="guestTitle_${i}" required>
+                <option value="">--</option>
+                <option value="Bro">Bro</option>
+                <option value="W Bro">W Bro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guestFirstName_${i}">First Name *</label>
+              <input type="text" id="guestFirstName_${i}" name="guestFirstName_${i}" required>
+            </div>
+            <div class="form-group">
+              <label for="guestLastName_${i}">Last Name *</label>
+              <input type="text" id="guestLastName_${i}" name="guestLastName_${i}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="guestMasonicRank_${i}">Masonic Rank / Office *</label>
+            <input type="text" id="guestMasonicRank_${i}" name="guestMasonicRank_${i}" placeholder="e.g. Master Mason / Past Master" required>
+          </div>
+        </div>
+      `;
+      container.appendChild(guestCard);
+    }
+    calculateTotal();
+  }
+
+  function calculateTotal() {
+    const subType = document.getElementById('submissionType').value;
+    const isDining = document.getElementById('attendingFestiveBoard').value === 'Yes';
+    const guestCount = parseInt(document.getElementById('guestCount').value) || 0;
+    
+    if (subType === 'Join Permanent Dining List' || subType === 'Request Removal from Perm List') {
+      document.getElementById('calculatedTotal').value = 0;
+      return;
+    }
+
+    let totalDiners = subType === 'Standard Booking' ? (isDining ? 1 + guestCount : 0) : guestCount;
+    const totalAmount = totalDiners * PRICE_PER_HEAD;
+
+    document.getElementById('totalDisplay').textContent = `£${totalAmount.toFixed(2)}`;
+    document.getElementById('calculatedTotal').value = totalAmount;
+
+    if (subType !== 'Standard Booking') {
+      document.getElementById('breakdownDisplay').textContent = `Guest Only Entry: ${guestCount} Guest(s) = £${totalAmount}`;
+    } else if (!isDining) {
+      document.getElementById('breakdownDisplay').textContent = 'Not dining at Festive Board (£0.00)';
+    } else {
+      document.getElementById('breakdownDisplay').textContent = `1 Member (£${PRICE_PER_HEAD}) + ${guestCount} Guest(s) = £${totalAmount}`;
+    }
+  }
+
+  document.getElementById('diningForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    const formData = new FormData(this);
+
+    fetch(this.action, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || 'Thank you! Your submission has been received.');
+      this.reset();
+      autoSelectActiveMeeting();
+      switchMainTab(activeTab);
+      submitBtn.disabled = false;
+    })
+    .catch(err => {
+      alert('Thank you! Your submission has been received.');
+      this.reset();
+      autoSelectActiveMeeting();
+      switchMainTab(activeTab);
+      submitBtn.disabled = false;
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    autoSelectActiveMeeting();
+    switchMainTab('meetings');
+    fetch(SCRIPT_URL).then(res => res.json()).then(data => {
+      liveDelegateCount = data.sponsoredCount || 0;
+      delegateCap = data.cap || 10;
+    }).catch(err => console.log('Notice:', err));
+  });
+</script>
+
+</body>
+</html>
